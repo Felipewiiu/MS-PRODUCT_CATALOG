@@ -1,10 +1,9 @@
 package com.product_management.MS_PRODUCT_MANAGEMENT.dto;
 
-import com.product_management.MS_PRODUCT_MANAGEMENT.domain.enums.Category;
-
 import java.time.LocalDateTime;
 
-public record ProductDto(
+public record ProductDetailDto(
+        Long productCode,
 
         String category,
 

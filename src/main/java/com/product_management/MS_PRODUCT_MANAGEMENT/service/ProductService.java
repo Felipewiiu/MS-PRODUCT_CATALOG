@@ -8,13 +8,13 @@ public interface ProductService {
 
     public List<Product> getAllProducts();
 
-    public Product getProductById(int id);
+    public Product getProductById(Long id);
 
-    public Product deleteProductById(int id);
+    public void deleteProductById(Long id);
 
-    public Product updateProduct(Product product);
+    public Product updateProduct(Long id, Product product);
 
     public Product addProduct(Product product);
 
-    public Product debitQuantityProduct(Product product, int quantity);
+    public Product debitQuantityProduct(Long productId, Integer quantity);
 }

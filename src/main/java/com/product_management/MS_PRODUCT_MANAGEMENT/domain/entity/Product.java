@@ -1,7 +1,10 @@
 package com.product_management.MS_PRODUCT_MANAGEMENT.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.product_management.MS_PRODUCT_MANAGEMENT.domain.enums.Category;
 import jakarta.persistence.*;
+
+import jakarta.validation.ValidationException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +22,9 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long product_code;
+    private Long productCode;
 
+    @Enumerated(EnumType.ORDINAL)
     private Category category;
 
     private String name;
@@ -29,11 +33,50 @@ public class Product {
 
     private Double price;
 
-    private Integer stock_quantity;
+    private Integer stockQuantity;
 
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 
-    private Double discount_amount;
+    private Double discountAmount;
+
+    public void updateProduct(Product product) {
+
+        if (productCode != product.getProductCode()) {
+            this.productCode = this.productCode;
+        }
+
+        if (product.getCategory() != null) {
+            this.category = product.getCategory();
+        }
+
+        if (product.getName() != null) {
+            this.name = product.getName();
+        }
+
+        if (product.getDescription() != null) {
+            this.description = product.getDescription();
+        }
+
+        if (product.getPrice() != null) {
+            this.price = product.getPrice();
+        }
+
+        if (product.getStockQuantity() != null) {
+            this.stockQuantity = product.getStockQuantity();
+        }
+
+        if (product.getCreatedAt() != null) {
+            this.createdAt = product.getCreatedAt();
+        }
+
+        if (product.getUpdatedAt() != null) {
+            this.updatedAt = product.getUpdatedAt();
+        }
+
+        if (product.getDiscountAmount() != null) {
+            this.discountAmount = product.getDiscountAmount();
+        }
+    }
 }
