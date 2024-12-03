@@ -39,6 +39,7 @@ public class ProductController {
         ProductDetailDto productDetailDto = productDetailDtoMapper.toDto(product);
 
         return ResponseEntity.ok(productDetailDto);
+
     }
 
     @PostMapping
